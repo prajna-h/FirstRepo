@@ -1,0 +1,28 @@
+---
+- name: Executing hub
+  hosts: master
+
+  tasks:
+    - copy:
+       src: ~/Ansible-setup/Input/ipconfig.txt
+       dest: /home/ubuntu/apache-jmeter-3.3/bin/ipconfig.txt
+       mode: 0644
+
+
+    - name: Executing distributed setup
+      shell: sudo "/home/ubuntu/master.sh"
+      async: 2400
+      poll: 60
+      register: output
+
+    - name: Execution Log
+      debug:
+        msg: "The execution log is:{{ output }}"
+
+    - name: Taking Log files
+      shell: ./report.sh
+      register: output
+
+    - name: Output
+      debug:
+        msg: "The output is :{{ output }}"
