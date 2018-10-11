@@ -25,4 +25,4 @@
 
     - name: Output
       debug:
-        msg: "The output is :{{ output }}"
+        msg: "Output occured for playbook: The output is :{{ output }}"
