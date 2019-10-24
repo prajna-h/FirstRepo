@@ -15,14 +15,14 @@
       poll: 60
       register: output
 
-    - name: Execution Log
+    - name: Execution Log to analyse output
       debug:
         msg: "The execution log is:{{ output }}"
 
-    - name: Taking Log files
+    - name: Taking Log files to examin
       shell: ./report.sh
       register: output
 
-    - name: Output
+    - name: Acutal Output
       debug:
         msg: "Output occured for playbook: The output is :{{ output }}"
